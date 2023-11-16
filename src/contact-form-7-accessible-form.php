@@ -1,14 +1,24 @@
 <?php
-/*
-Plugin Name: Contact Form 7: Accessible Defaults
-Plugin URI: http://www.joedolson.com/
-Description: Sets up an accessible default form when using Contact Form 7.
-Version: 1.1.7
-Author: Joseph Dolson
-Author URI: http://www.joedolson.com/
-Text Domain: contact-form-7-accessible-defaults
-Domain Path: /lang/
-*/
+/**
+ * Contact Form 7: Accessible Defaults
+ *
+ * @package     Contact Form 7: Accessible Defaults
+ * @author      Joseph Dolson
+ * @license     GPL-2.0+
+ *
+ * @wordpress-plugin
+ * Plugin Name: Contact Form 7: Accessible Defaults
+ * Plugin URI:  https://github.com/joedolson/contact-form-7-accessible-defaults/
+ * Description: Sets up an accessible default form when using Contact Form 7.
+ * Author:      Joseph Dolson
+ * Author URI:  https://www.joedolson.com/
+ * Text Domain: accessible-contact-form-7
+ * License:     GPL-2.0+
+ * License URI: http://www.gnu.org/license/gpl-2.0.txt
+ * Domain Path: lang
+ * Version:     1.1.7
+ */
+
 /*  Copyright 2015-2023  Joseph C Dolson  (email : plugins@joedolson.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -35,15 +45,15 @@ function acf7_load_textdomain() {
 add_action( 'plugins_loaded', 'acf7_load_textdomain' );
 
 /**
- * Return template based on currently selected template
+ * Return template based on currently selected template.
  *
- * @param $template Default template for Contact Form 7
- * @param $prop Current property producing a template. (Same filter applies to features other than the default form.)
+ * @param string $template Default template for Contact Form 7
+ * @param string $prop Current property producing a template.
  *
- * @return $template New default template.
+ * @return string New default template.
  */
 function cf7adf_template( $template, $prop ) {
-	$current = ( isset( $_GET['base_form'] ) ) ? $_GET['base_form'] : 'basic';
+	$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
 	if ( 'form' === $prop ) {
 		switch( $current ) {
 			case 'address':
@@ -141,11 +151,12 @@ function cf7adf_template( $template, $prop ) {
 		$template = apply_filters( 'cf7adv_template', $template, $current );
 	} else if ( 'mail' === $prop ) {
 		switch ( $current ) {
+			$from = sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ), '[your-name] <[your-email]>' );
+			$sent = sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
+
 			case 'address':
-				$template['body'] =
-						sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ),
-								'[your-name] <[your-email]>' ) . "\n"
-						. sprintf( __( 'Subject: %s', 'contact-form-7' ),
+				$template['body'] = $from . "\n"
+						. sprintf( __( 'Subject: %s', 'contact-form-7-accessible-defaults' ),
 								'[your-subject]' ) . "\n\n"
 						. __( 'Address:', 'contact-form-7-accessible-defaults' )
 									. "\n" . '[address]'
@@ -158,14 +169,12 @@ function cf7adf_template( $template, $prop ) {
 						. __( 'Message Body:', 'contact-form-7-accessible-defaults' )
 								. "\n" . '[your-message]' . "\n\n"
 						. '--' . "\n"
-						. sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
+						. $sent;
 
-			break;
+				break;
 			case 'reserve':
 				$template['subject'] = sprintf( __( 'Reservation request for %s', 'contact-form-7-accessible-defaults' ), '[room]' );
-				$template['body'] =
-						sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ),
-								'[your-name] <[your-email]>' ) . "\n"
+				$template['body']    = $from . "\n"
 						. sprintf( __( 'Room Choice: %s', 'contact-form-7-accessible-defaults' ),
 								'[room]' ) . "\n\n"
 						. __( 'Arrival Date:', 'contact-form-7-accessible-defaults' )
@@ -181,32 +190,25 @@ function cf7adf_template( $template, $prop ) {
 						. __( 'Special notes:', 'contact-form-7-accessible-defaults' )
 								. "\n" . '[your-message]' . "\n\n"
 						. '--' . "\n"
-						. sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)',
-								'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
-			break;
+						. $sent;
+				break;
 			case 'subscribe':
-				$template['body'] =
-						sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ),
-								'[your-name] <[your-email]>' ) . "\n"
+				$template['body']    = $from . "\n"
 						. __( 'Subscription Format:', 'contact-form-7-accessible-defaults' )
 								. "\n" . '[format]' . "\n\n"
 						. '--' . "\n"
-						. sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)',
-								'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
+						. $sent;
 				$template['subject'] = sprintf( __( 'New subscription by %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
-			break;
+				break;
 			case 'upload':
-				$template['body'] =
-						sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ),
-								'[your-name] <[your-email]>' ) . "\n"
-						. __( 'Upload Submitted', 'contact-form-7-accessible-defaults' )
-								. "\n" . '[your-upload]' . "\n\n"
-						. '--' . "\n"
-						. sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)',
-								'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
+				$template['body']        = $from . "\n"
+					. __( 'Upload Submitted', 'contact-form-7-accessible-defaults' )
+							. "\n" . '[your-upload]' . "\n\n"
+					. '--' . "\n"
+					. $sent;
 				$template['subject']     = sprintf( __( 'New file submission from %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
 				$template['attachments'] = '[your-upload]';
-			break;
+				break;
 		}
 	}
 
@@ -217,7 +219,8 @@ add_filter( 'wpcf7_default_template', 'cf7adf_template', 10, 2 );
 /**
  * Produce the array of sample forms available
  *
- * @param $post Current Contact Form 7 Form object
+ * @param array $post Current Contact Form 7 Form object.
+ *
  * @return array
  */
 function cf7adb_forms( $post ) {
@@ -231,8 +234,12 @@ function cf7adb_forms( $post ) {
 	/**
 	 * Filters the array of sample forms. Insert an additional form from a plug-in or theme.
 	 *
-	 * @param $forms array of forms.
-	 * @param $post Current Contact Form 7 Form object
+	 * @hook cf7adb_add_form_select
+	 *
+	 * @param {array}  $forms array of forms.
+	 * @param {object} $post Current Contact Form 7 Form object.
+	 *
+	 * @return {array}
 	 */
 	return apply_filters( 'cf7adb_add_form_select', $forms, $post );
 }
@@ -240,8 +247,9 @@ function cf7adb_forms( $post ) {
 /**
  * Generate form selector panel.
  *
- * @param $post Current Contact Form 7 object
- * @return $links list of links to select from.
+ * @param array $panels Current Contact Form 7 object.
+ *
+ * @return array Available contact form panels.
  */
 function cf7adb_create_form( $panels ) {
 	if ( isset( $_GET['page'] ) && 'wpcf7-new' === $_GET['page'] ) {
