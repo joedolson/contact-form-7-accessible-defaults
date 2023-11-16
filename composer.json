@@ -3,7 +3,7 @@
     "description": "Contact Form 7: Accessible Defaults",
     "keywords": ["wcag", "wpcf7", "accessibility", "form"],
     "homepage": "https://github.com/joedolson/contact-form-7-accessible-defaults",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "authors": [{
         "name": "Joseph Dolson",
         "email": "plugins@joedolson.com",
