@@ -144,68 +144,47 @@ function cf7adf_template( $template, $prop ) {
 					. '    [textarea your-message id:your-message] </p>' . "\n\n";
 		}
 
-		$template =
-				'[response]' . "\n\n"
-				. $template . "\n\n"
-				.  '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
+		$template = '[response]' . "\n\n" . $template . "\n\n" .  '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
 		$template = apply_filters( 'cf7adv_template', $template, $current );
 	} else if ( 'mail' === $prop ) {
 		switch ( $current ) {
+			// translators: Contact Form 7 placeholder for [your-name] <[your-email]>.
 			$from = sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ), '[your-name] <[your-email]>' );
+			// translators: 1) site name, 2) site URL.
 			$sent = sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
-
+			// translators: Contact Form 7 placeholder [your-subject].
+			$subject = sprintf( __( 'Subject: %s', 'contact-form-7-accessible-defaults' ), '[your-subject]' );
 			case 'address':
-				$template['body'] = $from . "\n"
-						. sprintf( __( 'Subject: %s', 'contact-form-7-accessible-defaults' ),
-								'[your-subject]' ) . "\n\n"
-						. __( 'Address:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[address]'
-									. "\n" . '[address2]'
-									. "\n" . '[city]'
-									. "\n" . '[state]'
-									. "\n" . '[postal]'
-									. "\n" . '[country]' . "\n"
-									. "\n" . '[mailing]' . "\n\n"
-						. __( 'Message Body:', 'contact-form-7-accessible-defaults' )
-								. "\n" . '[your-message]' . "\n\n"
-						. '--' . "\n"
-						. $sent;
-
+				$template['body'] = $from . "\n" . $subject . "\n\n" . __( 'Address:', 'contact-form-7-accessible-defaults' ) . "\n" . '[address]' . "\n" . '[address2]' . "\n" . '[city]' . "\n" . '[state]' . "\n" . '[postal]' . "\n" . '[country]' . "\n" . "\n" . '[mailing]' . "\n\n" . __( 'Message Body:', 'contact-form-7-accessible-defaults' ) . "\n" . '[your-message]' . "\n\n" . '--' . "\n" . $sent;
 				break;
 			case 'reserve':
+				// translators: Contact Form 7 placeholder for [room].
 				$template['subject'] = sprintf( __( 'Reservation request for %s', 'contact-form-7-accessible-defaults' ), '[room]' );
 				$template['body']    = $from . "\n"
-						. sprintf( __( 'Room Choice: %s', 'contact-form-7-accessible-defaults' ),
-								'[room]' ) . "\n\n"
-						. __( 'Arrival Date:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[date-in]' . "\n\n"
-						. __( 'Approximate Arrival Time:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[time-in]' . "\n\n"
-						. __( 'Departure Date:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[date-out]' . "\n\n"
-						. __( 'Number of Adults:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[adults]' . "\n\n"
-						. __( 'Number of Children:', 'contact-form-7-accessible-defaults' )
-									. "\n" . '[children]' . "\n\n"
-						. __( 'Special notes:', 'contact-form-7-accessible-defaults' )
-								. "\n" . '[your-message]' . "\n\n"
+						. sprintf( __( 'Room Choice: %s', 'contact-form-7-accessible-defaults' ), '[room]' ) . "\n\n"
+						. __( 'Arrival Date:', 'contact-form-7-accessible-defaults' ) . "\n" . '[date-in]' . "\n\n"
+						. __( 'Approximate Arrival Time:', 'contact-form-7-accessible-defaults' ) . "\n" . '[time-in]' . "\n\n"
+						. __( 'Departure Date:', 'contact-form-7-accessible-defaults' ) . "\n" . '[date-out]' . "\n\n"
+						. __( 'Number of Adults:', 'contact-form-7-accessible-defaults' ) . "\n" . '[adults]' . "\n\n"
+						. __( 'Number of Children:', 'contact-form-7-accessible-defaults' ) . "\n" . '[children]' . "\n\n"
+						. __( 'Special notes:', 'contact-form-7-accessible-defaults' ) . "\n" . '[your-message]' . "\n\n"
 						. '--' . "\n"
 						. $sent;
 				break;
 			case 'subscribe':
-				$template['body']    = $from . "\n"
-						. __( 'Subscription Format:', 'contact-form-7-accessible-defaults' )
-								. "\n" . '[format]' . "\n\n"
+				$template['body'] = $from . "\n"
+						. __( 'Subscription Format:', 'contact-form-7-accessible-defaults' ) . "\n" . '[format]' . "\n\n"
 						. '--' . "\n"
 						. $sent;
+				// translators: Contact Form 7 placeholder for [your-name].
 				$template['subject'] = sprintf( __( 'New subscription by %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
 				break;
 			case 'upload':
-				$template['body']        = $from . "\n"
-					. __( 'Upload Submitted', 'contact-form-7-accessible-defaults' )
-							. "\n" . '[your-upload]' . "\n\n"
+				$template['body'] = $from . "\n"
+					. __( 'Upload Submitted', 'contact-form-7-accessible-defaults' ) . "\n" . '[your-upload]' . "\n\n"
 					. '--' . "\n"
 					. $sent;
+				// translators: Contact Form 7 placeholder for [your-name].
 				$template['subject']     = sprintf( __( 'New file submission from %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
 				$template['attachments'] = '[your-upload]';
 				break;
@@ -225,11 +204,11 @@ add_filter( 'wpcf7_default_template', 'cf7adf_template', 10, 2 );
  */
 function cf7adb_forms( $post ) {
 	$forms = array(
-		'basic'     => 'Basic',
-		'address'   => 'Contact with Address',
-		'reserve'   => 'Reservation',
-		'subscribe' => 'Subscription',
-		'upload'    => 'File Submission'
+		'basic'     => __( 'Basic', 'contact-form-7-accessible-defaults' ),
+		'address'   => __( 'Contact with Address', 'contact-form-7-accessible-defaults' ),
+		'reserve'   => __( 'Reservation', 'contact-form-7-accessible-defaults' ),
+		'subscribe' => __( 'Subscription', 'contact-form-7-accessible-defaults' ),
+		'upload'    => __( 'File Submission', 'contact-form-7-accessible-defaults' ),
 	);
 	/**
 	 * Filters the array of sample forms. Insert an additional form from a plug-in or theme.
