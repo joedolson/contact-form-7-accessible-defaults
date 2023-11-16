@@ -6,7 +6,7 @@ Requires at least: 4.2
 Tested up to: 6.4
 License: GPLv2 or later
 Text Domain: contact-form-7-accessible-defaults
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 
 Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms. 
 
@@ -29,6 +29,14 @@ Since version 4.5, Contact Form 7 has included the label element; but the usage 
 For more information about making Contact Form 7 accessible, read [how to set up an accessible form using contact form 7](https://rianrietveld.com/2014/03/how-to-set-up-an-accessible-form-using-contact-form-7-in-wordpress/), by Rian Rietveld.
 
 == Changelog ==
+
+= 1.1.8 =
+
+* Update code style for PHPCS conformance.
+* Update tested to & retest with WordPress 6.4 and Contact Form 7 5.8.3.
+* Update copyright.
+* Minor text & style changes.
+* Code simplification.
 
 = 1.1.7 =
 
