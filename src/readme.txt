@@ -5,7 +5,7 @@ Tags: wpcf7, contact form 7, contact forms, accessibility, wcag, a11y
 Requires at least: 4.2
 Tested up to: 6.4
 License: GPLv2 or later
-Text Domain: accessible-contact-form-7
+Text Domain: contact-form-7-accessible-defaults
 Stable tag: 1.1.7
 
 Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms. 

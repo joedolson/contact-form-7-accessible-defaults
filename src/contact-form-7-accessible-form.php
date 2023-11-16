@@ -9,7 +9,7 @@ Author URI: http://www.joedolson.com/
 Text Domain: contact-form-7-accessible-defaults
 Domain Path: /lang/
 */
-/*  Copyright 2015-2022  Joseph C Dolson  (email : plugins@joedolson.com)
+/*  Copyright 2015-2023  Joseph C Dolson  (email : plugins@joedolson.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ function cf7adf_template( $template, $prop ) {
 						. '--' . "\n"
 						. sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)',
 								'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
-				$template['subject'] = sprintf( __( 'New file submission from %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
+				$template['subject']     = sprintf( __( 'New file submission from %s', 'contact-form-7-accessible-defaults' ), '[your-name]' );
 				$template['attachments'] = '[your-upload]';
 			break;
 		}
@@ -280,8 +280,8 @@ function cf7adb_select_form( $post ) {
 		}
 	}
 	if ( $links ) {
-		$links = "
-			<h3>" . __( 'Select an accessible base form:', 'contact-form-7-accessible-defaults' ) . "</h3>
+		$links = '
+			<h3>' . __( 'Select an accessible base form:', 'contact-form-7-accessible-defaults' ) . "</h3>
 				<div class='select-accessible-template'>
 					<ul class='cf7adb'>
 						$links
