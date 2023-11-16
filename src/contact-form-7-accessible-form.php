@@ -19,21 +19,22 @@
  * Version:     1.1.7
  */
 
-/*  Copyright 2015-2023  Joseph C Dolson  (email : plugins@joedolson.com)
+/*
+	Copyright 2015-2023  Joseph C Dolson  (email : plugins@joedolson.com)
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 /**
@@ -47,7 +48,7 @@ add_action( 'plugins_loaded', 'acf7_load_textdomain' );
 /**
  * Return template based on currently selected template.
  *
- * @param string $template Default template for Contact Form 7
+ * @param string $template Default template for Contact Form 7.
  * @param string $prop Current property producing a template.
  *
  * @return string New default template.
@@ -55,12 +56,12 @@ add_action( 'plugins_loaded', 'acf7_load_textdomain' );
 function cf7adf_template( $template, $prop ) {
 	$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
 	if ( 'form' === $prop ) {
-		switch( $current ) {
+		switch ( $current ) {
 			case 'address':
 				$template =
 					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
 					. '<p><label for="your-subject">' . __( 'Your Subject', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text your-subject id:your-subject] </p>' . "\n\n"
@@ -82,61 +83,61 @@ function cf7adf_template( $template, $prop ) {
 					. '</fieldset>' . "\n\n"
 					. '<p><label for="your-message">' . __( 'Your Message', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [textarea your-message id:your-message] </p>' . "\n\n";
-					break;
+			break;
 			case 'reserve':
 				$template =
 					'<fieldset>' . "\n"
 					.'<legend>' . __( 'Reserve a Room', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n\n"
-					.'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					.'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
 					. '<p><label for="room">' . __( 'Room Choice', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [select room id:room "Honeymoon Suite" "Gate Cottage" "Dungeon"] </p>' . "\n\n"
-					. '<p><label for="date-in">' . __( 'Arrival Date', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="date-in">' . __( 'Arrival Date', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [date* date-in id:date-in]</p>' . "\n\n"
-					. '<p><label for="time-in">' . __( 'Approximate Arrival Time', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="time-in">' . __( 'Approximate Arrival Time', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [select* time-in id:time-in "10:00" "11:00" "12:00" "13:00" "14:00" "15:00" "16:00" "17:00" "18:00" "19:00" "20:00" "21:00" "22:00"]</p>' . "\n\n"
-					. '<p><label for="date-out">' . __( 'Departure Date', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="date-out">' . __( 'Departure Date', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [date* date-out id:date-out]</p>' . "\n\n"
-					. '<p><label for="adults">' . __( 'Number of Adults', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="adults">' . __( 'Number of Adults', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [number* adults id:adults min:1]</p>' . "\n\n"
-					. '<p><label for="children">' . __( 'Number of Children', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="children">' . __( 'Number of Children', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [number* children id:children min:0]</p>' . "\n\n"
 					. '<p><label for="your-message">' . __( 'Special Notes', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [textarea your-message id:your-message] </p>' . "\n\n"
 					. '</fieldset>';
-					break;
+			break;
 			case 'subscribe':
 				$template =
-					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
 					. '<fieldset>' . "\n"
 					. '<legend>' . __( 'Format', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n"
 					. '[radio format id:format use_label_element "HTML" "Plain Text"]' . "\n"
 					. '</fieldset>';
-					break;
+			break;
 			case 'upload':
 				$template =
-					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
-					. '<p><label for="your-upload">' . __( 'Upload', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-upload">' . __( 'Upload', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [file* your-upload id:your-upload] </p>' . "\n\n"
 					. '<fieldset>' . "\n"
 					. '<legend>' . __( 'File includes:', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n"
 					. '[checkbox format id:format use_label_element "References" "Cover Letter" "Resume" "Curriculum Vitae"]' . "\n"
 					. '</fieldset>';
-					break;
+			break;
 			case 'basic':
 			default:
 				$template =
-					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) .  ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
 					. '<p><label for="your-subject">' . __( 'Your Subject', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text your-subject id:your-subject] </p>' . "\n\n"
@@ -144,9 +145,9 @@ function cf7adf_template( $template, $prop ) {
 					. '    [textarea your-message id:your-message] </p>' . "\n\n";
 		}
 
-		$template = '[response]' . "\n\n" . $template . "\n\n" .  '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
+		$template = '[response]' . "\n\n" . $template . "\n\n" . '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
 		$template = apply_filters( 'cf7adv_template', $template, $current );
-	} else if ( 'mail' === $prop ) {
+	} elseif ( 'mail' === $prop ) {
 		switch ( $current ) {
 			// translators: Contact Form 7 placeholder for [your-name] <[your-email]>.
 			$from = sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ), '[your-name] <[your-email]>' );
@@ -161,6 +162,7 @@ function cf7adf_template( $template, $prop ) {
 				// translators: Contact Form 7 placeholder for [room].
 				$template['subject'] = sprintf( __( 'Reservation request for %s', 'contact-form-7-accessible-defaults' ), '[room]' );
 				$template['body']    = $from . "\n"
+						// translators: Contact Form 7 placeholder [room].
 						. sprintf( __( 'Room Choice: %s', 'contact-form-7-accessible-defaults' ), '[room]' ) . "\n\n"
 						. __( 'Arrival Date:', 'contact-form-7-accessible-defaults' ) . "\n" . '[date-in]' . "\n\n"
 						. __( 'Approximate Arrival Time:', 'contact-form-7-accessible-defaults' ) . "\n" . '[time-in]' . "\n\n"
