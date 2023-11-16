@@ -148,13 +148,13 @@ function cf7adf_template( $template, $prop ) {
 		$template = '[response]' . "\n\n" . $template . "\n\n" . '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
 		$template = apply_filters( 'cf7adv_template', $template, $current );
 	} elseif ( 'mail' === $prop ) {
+		// translators: Contact Form 7 placeholder for [your-name] <[your-email]>.
+		$from = sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ), '[your-name] <[your-email]>' );
+		// translators: 1) site name, 2) site URL.
+		$sent = sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
+		// translators: Contact Form 7 placeholder [your-subject].
+		$subject = sprintf( __( 'Subject: %s', 'contact-form-7-accessible-defaults' ), '[your-subject]' );
 		switch ( $current ) {
-			// translators: Contact Form 7 placeholder for [your-name] <[your-email]>.
-			$from = sprintf( __( 'From: %s', 'contact-form-7-accessible-defaults' ), '[your-name] <[your-email]>' );
-			// translators: 1) site name, 2) site URL.
-			$sent = sprintf( __( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7-accessible-defaults' ), get_bloginfo( 'name' ), get_bloginfo( 'url' ) );
-			// translators: Contact Form 7 placeholder [your-subject].
-			$subject = sprintf( __( 'Subject: %s', 'contact-form-7-accessible-defaults' ), '[your-subject]' );
 			case 'address':
 				$template['body'] = $from . "\n" . $subject . "\n\n" . __( 'Address:', 'contact-form-7-accessible-defaults' ) . "\n" . '[address]' . "\n" . '[address2]' . "\n" . '[city]' . "\n" . '[state]' . "\n" . '[postal]' . "\n" . '[country]' . "\n" . "\n" . '[mailing]' . "\n\n" . __( 'Message Body:', 'contact-form-7-accessible-defaults' ) . "\n" . '[your-message]' . "\n\n" . '--' . "\n" . $sent;
 				break;
@@ -263,14 +263,15 @@ function cf7adb_select_form( $post ) {
 		$url     = esc_url( add_query_arg( 'base_form', $key, $base_url ) );
 		$current = ( isset( $_GET['base_form'] ) ) ? $_GET['base_form'] : 'basic';
 		if ( $current === $key ) {
-			$links .= "<li class='selected'>$form</li>";
+			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='$url' aria-current='true'>$form</a></strong></li>";
 		} else {
 			$links .= "<li><a href='$url'>$form</a></li>";
 		}
 	}
 	if ( $links ) {
 		$links = '
-			<h3>' . __( 'Select an accessible base form:', 'contact-form-7-accessible-defaults' ) . "</h3>
+			<h3>' . __( 'Accessible Form Templates', 'contact-form-7-accessible-defaults' ) . '</h3>
+				<p>' . __( 'Templates provide a default selection of fields configured accessibly. You can modify and extend the forms once selected.', 'contact-form-7-accessible-defaults' ) . "</p>
 				<div class='select-accessible-template'>
 					<ul class='cf7adb'>
 						$links
