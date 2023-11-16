@@ -59,9 +59,9 @@ function cf7adf_template( $template, $prop ) {
 		switch ( $current ) {
 			case 'address':
 				$template =
-					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
-					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)' , 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
 					. '<p><label for="your-subject">' . __( 'Your Subject', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text your-subject id:your-subject] </p>' . "\n\n"
@@ -83,12 +83,12 @@ function cf7adf_template( $template, $prop ) {
 					. '</fieldset>' . "\n\n"
 					. '<p><label for="your-message">' . __( 'Your Message', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [textarea your-message id:your-message] </p>' . "\n\n";
-			break;
+				break;
 			case 'reserve':
 				$template =
 					'<fieldset>' . "\n"
-					.'<legend>' . __( 'Reserve a Room', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n\n"
-					.'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
+					. '<legend>' . __( 'Reserve a Room', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n\n"
+					. '<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [text* your-name id:your-name] </p>' . "\n\n"
 					. '<p><label for="your-email">' . __( 'Your Email', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [email* your-email id:your-email] </p>' . "\n\n"
@@ -107,7 +107,7 @@ function cf7adf_template( $template, $prop ) {
 					. '<p><label for="your-message">' . __( 'Special Notes', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
 					. '    [textarea your-message id:your-message] </p>' . "\n\n"
 					. '</fieldset>';
-			break;
+				break;
 			case 'subscribe':
 				$template =
 					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
@@ -118,7 +118,7 @@ function cf7adf_template( $template, $prop ) {
 					. '<legend>' . __( 'Format', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n"
 					. '[radio format id:format use_label_element "HTML" "Plain Text"]' . "\n"
 					. '</fieldset>';
-			break;
+				break;
 			case 'upload':
 				$template =
 					'<p><label for="your-name">' . __( 'Your Name', 'contact-form-7-accessible-defaults' ) . ' ' . __( '(required)', 'contact-form-7-accessible-defaults' ) . '</label><br />' . "\n"
@@ -131,7 +131,7 @@ function cf7adf_template( $template, $prop ) {
 					. '<legend>' . __( 'File includes:', 'contact-form-7-accessible-defaults' ) . '</legend>' . "\n"
 					. '[checkbox format id:format use_label_element "References" "Cover Letter" "Resume" "Curriculum Vitae"]' . "\n"
 					. '</fieldset>';
-			break;
+				break;
 			case 'basic':
 			default:
 				$template =
