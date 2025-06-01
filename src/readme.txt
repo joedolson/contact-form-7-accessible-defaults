@@ -35,6 +35,7 @@ For more information about making Contact Form 7 accessible, read [how to set up
 * Update WordPress versions required to match Contact Form 7.
 * Update Tested to.
 * Fix docs template.
+* Sanitizing & escaping improvements.
 
 = 1.1.8 =
 
