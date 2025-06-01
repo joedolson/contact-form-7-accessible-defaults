@@ -1,12 +1,12 @@
 === Contact Form 7: Accessible Defaults ===
 Contributors: joedolson
 Donate link: http://www.joedolson.com/donate/
-Tags: wpcf7, contact form 7, contact forms, accessibility, wcag, a11y
-Requires at least: 4.2
-Tested up to: 6.4
+Tags: wpcf7, contact form 7, accessibility, wcag, a11y
+Requires at least: 6.6
+Tested up to: 6.8
 License: GPLv2 or later
 Text Domain: contact-form-7-accessible-defaults
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 
 Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms. 
 
@@ -29,6 +29,12 @@ Since version 4.5, Contact Form 7 has included the label element; but the usage 
 For more information about making Contact Form 7 accessible, read [how to set up an accessible form using contact form 7](https://rianrietveld.com/2014/03/how-to-set-up-an-accessible-form-using-contact-form-7-in-wordpress/), by Rian Rietveld.
 
 == Changelog ==
+
+= 1.1.9 =
+
+* Update WordPress versions required to match Contact Form 7.
+* Update Tested to.
+* Fix docs template.
 
 = 1.1.8 =
 
