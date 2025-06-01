@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Filter: cf7adb_add_form_select - Contact Form 7 Accessible Defaults Hook Doumentation</title>
+    <title>Filter: cf7adv_template - Contact Form 7 Accessible Defaults Hook Doumentation</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -15,7 +15,7 @@
 
 <div id="main">
 
-    <header><h1 class="page-title">Filter: cf7adb_add_form_select</h1></header>
+    <header><h1 class="page-title">Filter: cf7adv_template</h1></header>
 	<main>
     
 
@@ -36,14 +36,14 @@
 
     
 
-    <h4 class="name" id="cf7adb_add_form_select">apply_filters( 'cf7adb_add_form_select', <span class="signature">$forms, $post )</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id="cf7adv_template">apply_filters( 'cf7adv_template', <span class="signature">$template, $current )</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Filters the array of sample forms. Insert an additional form from a plug-in or theme.</p>
+    <p>Filter the HTML/Contact Form 7 template passed into the current view.</p>
 </div>
 
 
@@ -77,13 +77,13 @@
 
         <tr>
             
-                <td class="name"><code>$forms</code></td>
+                <td class="name"><code>$template</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
             
@@ -93,20 +93,20 @@
 
             
 
-            <td class="description last"><p>array of forms.</p></td>
+            <td class="description last"><p>The HTML output for this template.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>$post</code></td>
+                <td class="name"><code>$current</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
             
@@ -116,7 +116,7 @@
 
             
 
-            <td class="description last"><p>Current Contact Form 7 Form object.</p></td>
+            <td class="description last"><p>The base form string argument selected.</p></td>
         </tr>
 
     
@@ -157,7 +157,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="contact-form-7-accessible-form.php.html">contact-form-7-accessible-form.php</a>, <a href="contact-form-7-accessible-form.php.html#line225">line 225</a>
+        <a href="contact-form-7-accessible-form.php.html">contact-form-7-accessible-form.php</a>, <a href="contact-form-7-accessible-form.php.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -191,7 +191,7 @@
     </dt>
     <dd>
         
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
     </dd>
