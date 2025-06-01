@@ -16,11 +16,11 @@
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/license/gpl-2.0.txt
  * Domain Path: lang
- * Version:     1.1.8
+ * Version:     1.1.9
  */
 
 /*
-	Copyright 2015-2023  Joseph C Dolson  (email : plugins@joedolson.com)
+	Copyright 2015-2025  Joseph C Dolson  (email : plugins@joedolson.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -146,6 +146,16 @@ function cf7adf_template( $template, $prop ) {
 		}
 
 		$template = '[response]' . "\n\n" . $template . "\n\n" . '<p>[submit "' . __( 'Send', 'contact-form-7-accessible-defaults' ) . '"]</p>';
+		/**
+		 * Filter the HTML/Contact Form 7 template passed into the current view.
+		 *
+		 * @hook cf7adv_template
+		 *
+		 * @param {string} $template The HTML output for this template.
+		 * @param {string} $current The base form string argument selected.
+		 *
+		 * @return {string}
+		 */
 		$template = apply_filters( 'cf7adv_template', $template, $current );
 	} elseif ( 'mail' === $prop ) {
 		// translators: Contact Form 7 placeholder for [your-name] <[your-email]>.
@@ -260,23 +270,23 @@ function cf7adb_select_form( $post ) {
 		$base_url = add_query_arg( 'locale', $_GET['locale'], $base_url );
 	}
 	foreach ( $available_forms as $key => $form ) {
-		$url     = esc_url( add_query_arg( 'base_form', $key, $base_url ) );
-		$current = ( isset( $_GET['base_form'] ) ) ? $_GET['base_form'] : 'basic';
+		$url     = add_query_arg( 'base_form', $key, $base_url );
+		$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
 		if ( $current === $key ) {
-			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='$url' aria-current='true'>$form</a></strong></li>";
+			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='" . esc_url( $url ) . "' aria-current='true'>" . esc_html( $form ) . "</a></strong></li>";
 		} else {
-			$links .= "<li><a href='$url'>$form</a></li>";
+			$links .= "<li><a href='" . esc_url( $url ) . "'>" . esc_html( $form ) . "</a></li>";
 		}
 	}
 	if ( $links ) {
 		$links = '
-			<h3>' . __( 'Accessible Form Templates', 'contact-form-7-accessible-defaults' ) . '</h3>
-				<p>' . __( 'Templates provide a default selection of fields configured accessibly. You can modify and extend the forms once selected.', 'contact-form-7-accessible-defaults' ) . "</p>
-				<div class='select-accessible-template'>
-					<ul class='cf7adb'>
-						$links
-					</ul>
-				</div>";
+			<h3>' . esc_html__( 'Accessible Form Templates', 'contact-form-7-accessible-defaults' ) . '</h3>
+			<p>' . esc_html__( 'Templates provide a default selection of fields configured accessibly. You can modify and extend the forms once selected.', 'contact-form-7-accessible-defaults' ) . "</p>
+			<div class='select-accessible-template'>
+				<ul class='cf7adb'>
+					$links
+				</ul>
+			</div>";
 
 		echo $links;
 	}
@@ -292,7 +302,7 @@ function cf7adb_enqueue_scripts() {
 		'cf7adbJs',
 		'cf7adb',
 		array(
-			'title' => __( 'Contact Form 7: Accessible Defaults', 'contact-form-7-accessible-defaults' ),
+			'title' => esc_html__( 'Contact Form 7: Accessible Defaults', 'contact-form-7-accessible-defaults' ),
 		)
 	);
 }
