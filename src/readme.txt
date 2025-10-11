@@ -26,9 +26,11 @@ Contact Form 7 is actually a very accessible plug-in. It has an accessible back-
 
 Since version 4.5, Contact Form 7 has included the label element; but the usage of them is limited, and isn't the best possible method. This plug-in supplies a new default form that includes everything you need to make your default form accessible. 
 
-For more information about making Contact Form 7 accessible, read [how to set up an accessible form using contact form 7](https://rianrietveld.com/2014/03/how-to-set-up-an-accessible-form-using-contact-form-7-in-wordpress/), by Rian Rietveld.
-
 == Changelog ==
+
+= 1.1.10 =
+
+* Docs update.
 
 = 1.1.9 =
 
