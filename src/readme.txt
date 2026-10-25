@@ -3,12 +3,12 @@ Contributors: joedolson
 Donate link: http://www.joedolson.com/donate/
 Tags: wpcf7, contact form 7, accessibility, wcag, a11y
 Requires at least: 6.6
-Tested up to: 6.8
+Tested up to: 7.1
 License: GPLv2 or later
 Text Domain: contact-form-7-accessible-defaults
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 
-Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms. 
+Replaces the default Contact Form 7 form with an accessible equivalent and provides a suite of selectable base forms.
 
 == Description ==
 
@@ -22,15 +22,18 @@ This plug-in replaces the default template that Contact Form 7 automatically gen
 
 The plug-in doesn't change anything about forms that have already been built with Contact Form 7. The structure of Contact Form 7 is such that it isn't possible for the plug-in to rewrite existing forms for improved accessibility, but it *is* possible to make sure that the base you have for starting a form is accessible.
 
-Contact Form 7 is actually a very accessible plug-in. It has an accessible back-end, and if you create the right template, the front-end form will have great accessibility. 
+Contact Form 7 is actually a very accessible plug-in. It has an accessible back-end, and if you create the right template, the front-end form will have great accessibility. This plugin helps ensure that you are starting from a more accessible default form.
 
-Since version 4.5, Contact Form 7 has included the label element; but the usage of them is limited, and isn't the best possible method. This plug-in supplies a new default form that includes everything you need to make your default form accessible. 
+Since version 4.5, Contact Form 7 has included the label element; but the usage of them is limited, and isn't the best possible method. This plug-in supplies a new default form that includes everything you need to make your default form accessible.
 
 == Changelog ==
 
 = 1.1.10 =
 
 * Docs update.
+* Remove docs build action.
+* Escape translatable strings.
+* Consolidate translatable string "(required)" to a single string.
 
 = 1.1.9 =
 
@@ -103,7 +106,7 @@ Since version 4.5, Contact Form 7 has included the label element; but the usage 
 
 = Will this fix all my Contact Form 7 forms? =
 
-Nope. All this does is change Contact Form 7 so that the default form it generates is accessible. This gives you a model for what an accessible form should look like in Contact Form 7 (with appropriately associated labels and IDs, and with the response moved to the top of the form.), but does nothing at all to change how Contact Form 7 behaves. 
+Nope. All this does is change Contact Form 7 so that the default form it generates is accessible. This gives you a model for what an accessible form should look like in Contact Form 7 (with appropriately associated labels and IDs, and with the response moved to the top of the form.), but does nothing at all to change how Contact Form 7 behaves.
 
 = Why aren't there demos for all types of fields? =
 

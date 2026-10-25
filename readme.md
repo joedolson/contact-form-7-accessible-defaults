@@ -11,7 +11,7 @@ Accessible default forms and form selection for Contact Form 7.
 * Requires at least: 6.6
 * Tested up to: 6.8
 * Requires PHP: 7.4
-* Stable tag: `1.1.9`
+* Stable tag: `1.1.10`
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ This is the development environment for Contact Form 7 Accessible Defaults.
 
 Bugs or feature development contributions should be made through the [GitHub repository](https://github.com/joedolson/contact-form-7-accessible-defaults/issues)
 
-## Authors 
+## Authors
 
 * [Joe Dolson](https://www.joedolson.com)
 

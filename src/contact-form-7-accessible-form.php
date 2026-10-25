@@ -16,11 +16,11 @@
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/license/gpl-2.0.txt
  * Domain Path: lang
- * Version:     1.1.9
+ * Version:     1.1.10
  */
 
 /*
-	Copyright 2015-2025  Joseph C Dolson  (email : plugins@joedolson.com)
+	Copyright 2015-2026  Joseph C Dolson  (email : plugins@joedolson.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
