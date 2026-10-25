@@ -40,10 +40,10 @@
 /**
  * Load textdomain.
  */
-function acf7_load_textdomain() {
+function cf7adf_load_textdomain() {
 	load_plugin_textdomain( 'contact-form-7-accessible-defaults' );
 }
-add_action( 'plugins_loaded', 'acf7_load_textdomain' );
+add_action( 'plugins_loaded', 'cf7adf_load_textdomain' );
 
 /**
  * Return template based on currently selected template.
