@@ -34,6 +34,7 @@ Since version 4.5, Contact Form 7 has included the label element; but the usage 
 * Remove docs build action.
 * Escape translatable strings.
 * Consolidate translatable string "(required)" to a single string.
+* Updates to meet current plugin check standards.
 
 = 1.1.9 =
 
