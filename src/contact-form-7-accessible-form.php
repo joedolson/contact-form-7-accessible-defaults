@@ -48,7 +48,7 @@ add_action( 'plugins_loaded', 'acf7_load_textdomain' );
 /**
  * Return template based on currently selected template.
  *
- * @param string $template Default template for Contact Form 7.
+ * @param string|array $template Default template for Contact Form 7. String if $prop is 'form', array otherwise.
  * @param string $prop Current property producing a template.
  *
  * @return string New default template.
@@ -151,10 +151,10 @@ function cf7adf_template( $template, $prop ) {
 		 *
 		 * @hook cf7adv_template
 		 *
-		 * @param {string} $template The HTML output for this template.
-		 * @param {string} $current The base form string argument selected.
+		 * @param string $template The HTML output for this template.
+		 * @param string $current The base form string argument selected.
 		 *
-		 * @return {string}
+		 * @return string The filtered HTML output for this template.
 		 */
 		$template = apply_filters( 'cf7adv_template', $template, $current );
 	} elseif ( 'mail' === $prop ) {
