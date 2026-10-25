@@ -297,10 +297,11 @@ function cf7adb_select_form( $post ) {
  * Enqueue scripting & CSS in CF7.
  */
 function cf7adb_enqueue_scripts() {
-	wp_enqueue_style( 'cf7adb', plugins_url( 'css/cf7adb.css', __FILE__ ) );
-	wp_enqueue_script( 'cf7adbJs', plugins_url( 'js/cf7adb.js', __FILE__ ) );
+	$version = ( SCRIPT_DEBUG ) ? time() : '1.1.10';
+	wp_enqueue_style( 'cf7adb', plugins_url( 'css/cf7adb.css', __FILE__ ), array(), $version );
+	wp_enqueue_script( 'cf7adb', plugins_url( 'js/cf7adb.js', __FILE__ ), array(), $version );
 	wp_localize_script(
-		'cf7adbJs',
+		'cf7adb',
 		'cf7adb',
 		array(
 			'title' => esc_html__( 'Contact Form 7: Accessible Defaults', 'contact-form-7-accessible-defaults' ),
