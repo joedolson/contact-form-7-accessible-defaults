@@ -23,4 +23,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include( dirname( __FILE__ ) . '/src/contact-form-7-accessible-form.php' );
+require_once __DIR__ . '/src/contact-form-7-accessible-form.php';

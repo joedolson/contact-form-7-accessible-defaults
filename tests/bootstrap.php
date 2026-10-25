@@ -23,7 +23,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/src/contact-form-7-accessible-form.php';
+	require dirname( __DIR__, 1 ) . '/src/contact-form-7-accessible-form.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

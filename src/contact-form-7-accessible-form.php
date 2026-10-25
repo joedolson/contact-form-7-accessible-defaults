@@ -49,7 +49,7 @@ add_action( 'plugins_loaded', 'cf7adf_load_textdomain' );
  * Return template based on currently selected template.
  *
  * @param string|array $template Default template for Contact Form 7. String if $prop is 'form', array otherwise.
- * @param string $prop Current property producing a template.
+ * @param string       $prop Current property producing a template.
  *
  * @return string New default template.
  */
@@ -274,9 +274,9 @@ function cf7adb_select_form( $post ) {
 		$url     = add_query_arg( 'base_form', $key, $base_url );
 		$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
 		if ( $current === $key ) {
-			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='" . esc_url( $url ) . "' aria-current='true'>" . esc_html( $form ) . "</a></strong></li>";
+			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='" . esc_url( $url ) . "' aria-current='true'>" . esc_html( $form ) . '</a></strong></li>';
 		} else {
-			$links .= "<li><a href='" . esc_url( $url ) . "'>" . esc_html( $form ) . "</a></li>";
+			$links .= "<li><a href='" . esc_url( $url ) . "'>" . esc_html( $form ) . '</a></li>';
 		}
 	}
 	if ( $links ) {
