@@ -12,10 +12,9 @@
  * Description: Sets up an accessible default form when using Contact Form 7.
  * Author:      Joseph Dolson
  * Author URI:  https://www.joedolson.com/
- * Text Domain: accessible-contact-form-7
+ * Text Domain: contact-form-7-accessible-defaults
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/license/gpl-2.0.txt
- * Domain Path: lang
  * Version:     1.1.10
  */
 
@@ -37,13 +36,9 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/**
- * Load textdomain.
- */
-function cf7adf_load_textdomain() {
-	load_plugin_textdomain( 'contact-form-7-accessible-defaults' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
-add_action( 'plugins_loaded', 'cf7adf_load_textdomain' );
 
 /**
  * Return template based on currently selected template.
@@ -54,7 +49,7 @@ add_action( 'plugins_loaded', 'cf7adf_load_textdomain' );
  * @return string New default template.
  */
 function cf7adf_template( $template, $prop ) {
-	$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
+	$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( wp_unslash( $_GET['base_form'] ) ) : 'basic';
 	if ( 'form' === $prop ) {
 		$required_text = esc_html__( '(required)', 'contact-form-7-accessible-defaults' );
 		switch ( $current ) {
@@ -265,14 +260,14 @@ add_filter( 'wpcf7_editor_panels', 'cf7adb_create_form' );
 function cf7adb_select_form( $post ) {
 	$links           = '';
 	$available_forms = cf7adb_forms( $post );
-	$locale          = ( isset( $_GET['locale'] ) ) ? $_GET['locale'] : false;
+	$locale          = ( isset( $_GET['locale'] ) ) ? sanitize_text_field( wp_unslash( $_GET['locale'] ) ) : false;
 	$base_url        = admin_url( 'admin.php?page=wpcf7-new' );
 	if ( $locale ) {
-		$base_url = add_query_arg( 'locale', $_GET['locale'], $base_url );
+		$base_url = add_query_arg( 'locale', $locale, $base_url );
 	}
 	foreach ( $available_forms as $key => $form ) {
 		$url     = add_query_arg( 'base_form', $key, $base_url );
-		$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( $_GET['base_form'] ) : 'basic';
+		$current = ( isset( $_GET['base_form'] ) ) ? sanitize_text_field( wp_unslash( $_GET['base_form'] ) ) : 'basic';
 		if ( $current === $key ) {
 			$links .= "<li class='selected'><strong><span class='dashicons dashicons-yes' aria-hidden='true'></span> <a href='" . esc_url( $url ) . "' aria-current='true'>" . esc_html( $form ) . '</a></strong></li>';
 		} else {
@@ -289,7 +284,7 @@ function cf7adb_select_form( $post ) {
 				</ul>
 			</div>";
 
-		echo $links;
+		echo wp_kses_post( $links );
 	}
 }
 
@@ -299,7 +294,7 @@ function cf7adb_select_form( $post ) {
 function cf7adb_enqueue_scripts() {
 	$version = ( SCRIPT_DEBUG ) ? time() : '1.1.10';
 	wp_enqueue_style( 'cf7adb', plugins_url( 'css/cf7adb.css', __FILE__ ), array(), $version );
-	wp_enqueue_script( 'cf7adb', plugins_url( 'js/cf7adb.js', __FILE__ ), array(), $version );
+	wp_enqueue_script( 'cf7adb', plugins_url( 'js/cf7adb.js', __FILE__ ), array(), $version, true );
 	wp_localize_script(
 		'cf7adb',
 		'cf7adb',
