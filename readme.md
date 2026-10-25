@@ -9,7 +9,7 @@ Accessible default forms and form selection for Contact Form 7.
 * Donate link: https://www.joedolson.com/donate/
 * Tags: accessibility, WordPress, contact forms
 * Requires at least: 6.6
-* Tested up to: 6.8
+* Tested up to: 7.1
 * Requires PHP: 7.4
 * Stable tag: `1.1.10`
 * License: GPLv2 or later
